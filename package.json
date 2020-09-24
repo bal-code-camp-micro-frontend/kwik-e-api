@@ -1,0 +1,31 @@
+{
+  "name": "kwik-e-api",
+  "version": "1.0.0",
+  "description": "<https://kwik-e-api.apps.baloise.dev>",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "serve": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bal-code-camp-micro-frontend/kwik-e-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bal-code-camp-micro-frontend/kwik-e-api/issues"
+  },
+  "homepage": "https://github.com/bal-code-camp-micro-frontend/kwik-e-api#readme",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "express": "^4.17.1",
+    "nocache": "^2.1.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "nodemon": "^2.0.4",
+    "serve": "^11.3.2"
+  }
+}

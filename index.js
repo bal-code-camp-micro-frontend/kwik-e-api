@@ -5,6 +5,8 @@ const { v4: uuidv4 } = require('uuid');
 const cookieSession = require('cookie-session')
 const nocache = require('nocache')
 const { apiAddCartProduct, apiHeadCartProduct, apiGetCartProduct, apiGetAllCartProducts, apiRemoveCartProduct} = require('./checkoutApi');
+const { findAllProducts, findAllRecommendations} = require('./listApi')
+const { getProduct } = require('./detailApi')
 const { mockCheckoutCart } = require('./cart');
 const app = express()
 const port = 3003
@@ -24,6 +26,17 @@ app.use('/c/api', (req, res, next) => {
     next()
 })
 
+const listApiRouter = express.Router()
+listApiRouter.use(nocache())
+listApiRouter.get('/product', findAllProducts)
+listApiRouter.get('/recommendation/:id', findAllRecommendations)
+app.use('/l/api', listApiRouter)
+
+const detailApiRouter = express.Router()
+detailApiRouter.use(nocache())
+detailApiRouter.get('/product/:id', getProduct)
+app.use('/d/api', detailApiRouter)
+
 const checkoutApiRouter = express.Router()
 checkoutApiRouter.use(nocache())
 checkoutApiRouter.get('/product', apiGetAllCartProducts)
@@ -37,5 +50,7 @@ app.get('/healthz', (_, res) => res.send('ok'))
 
 app.listen(port, () => {
     console.log(`Healthz => http://localhost:${port}/healthz`)
-    console.log(`Checkout API product 1 => http://localhost:${port}/c/api/product/1`)
+    console.log(`List API => http://localhost:${port}/l/api/product?search=krusty`)
+    console.log(`Detail API => http://localhost:${port}/d/api/product/1`)
+    console.log(`Checkout API  => http://localhost:${port}/c/api/product`)
 })

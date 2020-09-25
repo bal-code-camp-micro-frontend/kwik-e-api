@@ -19,6 +19,7 @@
   "homepage": "https://github.com/bal-code-camp-micro-frontend/kwik-e-api#readme",
   "dependencies": {
     "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "nocache": "^2.1.0",
     "uuid": "^8.3.0"

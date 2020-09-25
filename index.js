@@ -3,6 +3,7 @@
 const express = require('express')
 const { v4: uuidv4 } = require('uuid');
 const cookieSession = require('cookie-session')
+const cors = require('cors')
 const nocache = require('nocache')
 const { apiAddCartProduct, apiHeadCartProduct, apiGetCartProduct, apiGetAllCartProducts, apiRemoveCartProduct} = require('./checkoutApi');
 const { findAllProducts, findAllRecommendations} = require('./listApi')
@@ -10,6 +11,8 @@ const { getProduct } = require('./detailApi')
 const { mockCheckoutCart } = require('./cart');
 const app = express()
 const port = 3003
+
+app.use(cors())
 
 app.use(cookieSession({
     name: 'session',
